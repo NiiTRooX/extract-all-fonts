@@ -5,3 +5,6 @@ description = "This script extracts all font attachments of a Matroska file"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
+
+[project.scripts]
+extract-all-fonts = "extract_all_fonts:main"
