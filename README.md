@@ -11,3 +11,8 @@ This script extracts all font attachments of a Matroska file
 ## Usage
 `extract-all-fonts /path/to/mkv`
 dumps all font attachments in the current dir
+
+
+Only the filename is checked for duplicates
+
+An option for output dir might be nice to have
