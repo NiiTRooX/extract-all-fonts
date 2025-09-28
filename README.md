@@ -6,7 +6,9 @@ This script extracts all font attachments of a Matroska file
 - mkvtoolnix executables
 
 ## Installation with uv
-`uv tool install git+https://github.com/NiiTRooX/extract-all-fonts.git`
+```
+uv tool install git+https://github.com/NiiTRooX/extract-all-fonts.git
+```
 
 ## Usage
 `extract-all-fonts /path/to/mkv`
