@@ -30,23 +30,9 @@ attachment_types = (
     'font/ttf', 'font/otf', 'font/ttc', 'font/otc'
 )
 
-# Track lines (EN + DE share same structure except Track/Spur)
-regexp_track = re.compile(
-    r"^(?:Track|Spur) ID (?P<id>\d+): (?P<type>\w+) \((?P<codec>[^\)]+)\)$",
-    re.M
-)
-
-# ---- Combined EN + DE attachment regex ----
-# Matches both:
-#   Attachment ID 1: type 'x', size 123 bytes, file name 'ABC.ttf'
-#   Dateianhang ID 1: Typ »x«, Größe 123 Byte, Dateiname »ABC.ttf«
-regexp_attachment = re.compile(
-    r"^(?:Attachment|Dateianhang) ID (?P<id>\d+): "
-    r"(?:type|Typ) ['»](?P<type>[^'»]+)['»], "
-    r"(?:size|Größe) (?P<size>\d+) (?:bytes|Byte), "
-    r"(?:file name|Dateiname) ['»](?P<name>[^'»]+)['»]$",
-    re.M
-)
+# I hate regex
+regexp_track = re.compile(r"^Track ID (?P<id>\d+): (?P<type>\w+) \((?P<codec>[^\)]+)\)$", re.M)
+regexp_attachment = re.compile(r"^Attachment ID (?P<id>\d+): type '(?P<type>[^']+)', size (?P<size>\d+) bytes, file name '(?P<name>.*?)'$", re.M)
 
 
 def debug(*args):
