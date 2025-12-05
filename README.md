@@ -4,6 +4,7 @@ This script extracts all font attachments of a Matroska file
 ## Requirements
 
 - mkvtoolnix executables
+- mkvmerge output has to be English
 
 ## Installation with uv
 ```
