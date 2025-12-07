@@ -64,7 +64,7 @@ Attachment = namedtuple("Attachment", "id type size name")
 
 
 def mkvidentify(video):
-    identify = mkv("merge", "--ui-language", "en", "--identify", video)
+    identify = mkv("merge", "--identify", video)
     debug("Identify output:\n" + identify)
 
     tracks = [Track(*x) for x in regexp_track.findall(identify)]
