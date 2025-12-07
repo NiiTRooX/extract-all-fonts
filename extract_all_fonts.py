@@ -1,6 +1,8 @@
 # This script extracts all font attachments of a Matroska file
 # Requirements: mkvtoolnix executables
 
+import os
+import platform
 import subprocess
 import re
 from collections import namedtuple
@@ -41,9 +43,20 @@ def debug(*args):
 
 
 def mkv(tool, *params):
-    cmd = ['mkv' + tool] + [str(p) for p in params]
-    debug("Running:", " ".join(cmd))
-    return subprocess.check_output(cmd, universal_newlines=True)
+    exe = "mkv" + tool
+    params = [str(p) for p in params]
+
+    if platform.system() == "Windows":
+        cmd = [exe, "--ui-language", "en"] + params
+        return subprocess.check_output(cmd, universal_newlines=True)
+
+    else:
+        # Linux / macOS: force English via environment
+        env = dict(os.environ)
+        env["LANG"] = "C"
+        env["LC_ALL"] = "C"
+        cmd = [exe] + params
+        return subprocess.check_output(cmd, universal_newlines=True, env=env)
 
 MatroskaContainer = namedtuple("MatroskaContainer", "tracks attachments")
 Track = namedtuple("Track", "id type codec")
