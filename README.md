@@ -15,6 +15,6 @@ uv tool install git+https://github.com/NiiTRooX/extract-all-fonts.git
 extract-all-fonts /path/to/mkv --out ~/.local/share/fonts
 ```
 
-`--out` is optional, fonts are dumped into the current dir if left out
+The `--out` option is optional. If it is not specified, fonts will be written to the current directory.
 
-Only the filename is checked for duplicates
+Duplicate detection is based on the filename only.
